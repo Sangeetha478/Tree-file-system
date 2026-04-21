@@ -1,0 +1,76 @@
+A company maintains a hierarchical organizational structure where each employee reports to exactly one manager (except the CEO). This structure forms a tree, where:
+
+The CEO is the root node
+Each manager is an internal node
+Employees without subordinates are leaf nodes
+
+The company wants to analyze team sizes for better resource allocation.
+
+🎯 Task
+
+You are required to design a program that:
+
+👉 Takes the name of a manager as input
+👉 Finds that manager in the hierarchy
+👉 Calculates the total number of employees working under that manager, including the manager themself
+
+🧾 Detailed Example
+
+Consider the following company hierarchy:
+
+CEO
+ ├── Manager1
+ │    ├── Emp1
+ │    └── Emp2
+ └── Manager2
+      └── Emp3
+🔍 Explanation
+If the input is Manager1
+Subtree includes: Manager1, Emp1, Emp2
+Output: 3
+If the input is CEO
+Entire tree is counted
+Output: 6
+If the input is Emp3
+No subordinates
+Output: 1
+⚙️ Functional Requirements
+Construct the tree representing employee hierarchy
+Search for a given employee (manager)
+Traverse the subtree rooted at that employee
+Count all nodes in that subtree
+💡 Approach
+Step 1: Tree Representation
+
+Use a general tree where each node stores:
+
+Employee name
+List of child nodes (subordinates)
+Step 2: Search Operation
+
+Use Depth First Search (DFS) to locate the given manager.
+
+Step 3: Counting Subtree Nodes
+
+Once the manager is found:
+
+Count current node (1)
+Recursively count all children
+🔁 Algorithm
+Function: findNode(root, name)
+If root is NULL → return NULL
+If root name matches → return root
+Recursively search in children
+Return found node or NULL
+Function: countEmployees(root)
+If root is NULL → return 0
+Initialize count = 1
+For each child:
+Add result of recursive call
+Return count
+⏱️ Time Complexity
+Searching node: O(n)
+Counting subtree: O(n)
+Overall complexity: O(n)
+
+Where n is the number of employees.
